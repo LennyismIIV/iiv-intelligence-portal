@@ -4,19 +4,15 @@ import path from 'path'
 
 export default defineConfig({
   plugins: [react()],
+  root: 'client',                    // ← This line fixes the issue
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./client/src"),
       "@shared": path.resolve(__dirname, "./shared"),
     },
   },
-  server: {
-    proxy: {
-      '/api': 'http://localhost:5000',
-    },
-  },
   build: {
-    outDir: 'dist/public',
+    outDir: '../dist/public',
     emptyOutDir: true,
   },
 })
